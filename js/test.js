@@ -1,4 +1,4 @@
-$(function () {
+﻿$(function () {
 
     function initialize() {
 
@@ -6,13 +6,12 @@ $(function () {
         var defaultLatlng = new google.maps.LatLng(37.09024, -95.712891);
         var biographies = [];
         var marker;
-        var infoWindowMaxWidth  = 600;
-        var infoWindowMaxHeight = 600;
-        var zoom = 5;
+        var infoWindowMaxWidth = 500;
+        var infoWindowMaxHeight = 500;
 
         // Default view for map
         var mapOptions = {
-            zoom: zoom,
+            zoom: 5,
             center: defaultLatlng
         };
 
@@ -21,30 +20,36 @@ $(function () {
 
         // Content for info window -- appears when user clicks on a marker
         var infowindow = new google.maps.InfoWindow({
-            content:   "",
-            maxWidth:  infoWindowMaxWidth,
+            content: "",
+            maxWidth: infoWindowMaxWidth,
             maxHeight: infoWindowMaxHeight
         });
 
         // Loop through evangelists
         for (var i = 0; i < evangelists.length; i++) {
-            var e = evangelists;
-            console.log(e[i]);
+            var evangelist = evangelists[i];
+            console.log(evangelist);
+        }
 
-            marker = new google.maps.Marker({                         // Create a new marker for each location in array        
-                position: new google.maps.LatLng(e[i].lng, e[i].lat), // Takes lat and lang as arguments
-                map: map                                              // Draws to this current map  
+        // Loop through each location
+        for (i = 0; i < locations.length; i++) {
+            marker = new google.maps.Marker({                                       // Create a new marker for each location in array        
+                position: new google.maps.LatLng(locations[i][2], locations[i][3]),     // Takes lat and lang as arguments
+                map: map,                                                               // Draws to this current map  
+
             });
 
+
+
             // Creates a bio for each person and stores it in an array
-            var biography = formatBiography(e[i].name, e[i].city, null, e[i].bio, e[i].twitter, e[i].websiteUrl);
+            var biography = formatBiography(locations[i][0], locations[i][1], locations[i][4], locations[i][5], locations[i][6]);
             biographies.push(biography);
-           
+
             // When you click the marker, pop up an info window
             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                 return function () {
                     infowindow.setContent(biographies[i]);
-                    infowindow.open(map, marker);                    // open window using current map and currently slect marker
+                    infowindow.open(map, marker);                                       // open window using current map and currently slect marker
                 }
             })(marker, i));
 
@@ -53,14 +58,14 @@ $(function () {
         // Formats text for bio -- apears above each pin when selected
         // Loops through content in "Locations" array and places it in bio
         // RETURNS: A formatted string
-        function formatBiography(name, city, imageUrl, bio, twitter, websiteUrl) {
+        function formatBiography(name, city, imageUrl, bodyContent, twitter, websiteUrl) {
             var html = [""];
 
             html.push(
                 '<h1 id="firstHeading" class="firstHeading">' + name + '</h1>' +
                 '<h3>' + city + '</h3>' +
                 '<div id="bodyContent">' +
-                    bio +
+                    bodyContent +
                 '</div>' +
                 '<p>' +
                 '<a href=' + twitter + '/>' + twitter +
@@ -73,8 +78,8 @@ $(function () {
     }
 
     // When dom load event is triggered, call initlaize function
-        google.maps.event.addDomListener(window, 'load', initialize);
-    
+    google.maps.event.addDomListener(window, 'load', initialize);
+
 });
 
 
