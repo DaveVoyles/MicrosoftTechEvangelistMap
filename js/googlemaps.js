@@ -6,13 +6,13 @@ $(function () {
         var defaultLatlng = new google.maps.LatLng(37.09024, -95.712891);
         var biographies = [];
         var marker;
-        var infoWindowMaxWidth  = 600;
+        var infoWindowMaxWidth  = 700;
         var infoWindowMaxHeight = 600;
         var zoom = 5;
 
         // Default view for map
         var mapOptions = {
-            zoom: zoom,
+            zoom:   zoom,
             center: defaultLatlng
         };
 
@@ -37,7 +37,7 @@ $(function () {
             });
 
             // Creates a bio for each person and stores it in an array
-            var biography = formatBiography(e[i].name, e[i].city, null, e[i].bio, e[i].twitter, e[i].websiteUrl);
+            var biography = formatBiography(e[i].name, e[i].city, e[i].img, e[i].bio, e[i].twitter, e[i].websiteUrl);
             biographies.push(biography);
            
             // When you click the marker, pop up an info window
@@ -53,19 +53,23 @@ $(function () {
         // Formats text for bio -- apears above each pin when selected
         // Loops through content in "Locations" array and places it in bio
         // RETURNS: A formatted string
-        function formatBiography(name, city, imageUrl, bio, twitter, websiteUrl) {
+        function formatBiography(name, city, img, bio, twitter, websiteUrl) {
             var html = [""];
 
             html.push(
+                '<div class="bio-container">' +
                 '<h1 id="firstHeading" class="firstHeading">' + name + '</h1>' +
                 '<h3>' + city + '</h3>' +
                 '<div id="bodyContent">' +
-                    bio +
-                '</div>' +
+                 bio +
+                '</div> <!-- .bodyContent-->' +
                 '<p>' +
                 '<a href=' + twitter + '/>' + twitter +
                 '<p>' +
-                '<a href="' + websiteUrl + '"/>' + websiteUrl
+                '<a href="' + websiteUrl + '"/>' + websiteUrl +
+                '</div> <!-- Bio Container -->' +
+                '<img src=' + img + ' class = "evangelist-img">' +
+                '</div><!-- .bio-container -->'
                 );
             return html.join('');
         };
