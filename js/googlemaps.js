@@ -6,6 +6,7 @@ $(function () {
         var defaultLatlng = new google.maps.LatLng(37.09024, -95.712891);
         var biographies = [];
         var marker;
+        var markerAnim = google.maps.Animation.DROP;
         var infoWindowMaxWidth  = 700;
         var infoWindowMaxHeight = 600;
         var zoom = 5;
@@ -33,11 +34,12 @@ $(function () {
 
             marker = new google.maps.Marker({                         // Create a new marker for each location in array        
                 position: new google.maps.LatLng(e[i].lng, e[i].lat), // Takes lat and lang as arguments
-                map: map                                              // Draws to this current map  
+                map: map,                                             // Draws to this current map  
+                animation: markerAnim
             });
 
             // Creates a bio for each person and stores it in an array
-            var biography = formatBiography(e[i].name, e[i].city, e[i].img, e[i].bio, e[i].twitter, e[i].websiteUrl);
+            var biography = formatBiography(e[i].name, e[i].city, e[i].spec, e[i].img, e[i].bio, e[i].twitter, e[i].websiteUrl);
             biographies.push(biography);
            
             // When you click the marker, pop up an info window
@@ -53,13 +55,14 @@ $(function () {
         // Formats text for bio -- apears above each pin when selected
         // Loops through content in "Locations" array and places it in bio
         // RETURNS: A formatted string
-        function formatBiography(name, city, img, bio, twitter, websiteUrl) {
+        function formatBiography(name, city, spec, img, bio, twitter, websiteUrl) {
             var html = [""];
 
             html.push(
                 '<div class="bio-container">' +
                 '<h1 id="firstHeading" class="firstHeading">' + name + '</h1>' +
                 '<h3>' + city + '</h3>' +
+                '<h3>' + spec + '</h3>' +
                 '<div id="bodyContent">' +
                  bio +
                 '</div> <!-- .bodyContent-->' +

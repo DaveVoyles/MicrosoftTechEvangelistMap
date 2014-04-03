@@ -8,7 +8,8 @@ var evangelists = [
             "city": "Philadelphia | Baltimore",
             "img": "/img/People/DaveVoyles.jpg",
             "twitter": "@DaveVoyles",
-            "websiteUrl": "wwww.davidvoyles.wordpress.com"
+            "websiteUrl": "wwww.davidvoyles.wordpress.com",
+             "spec": "Gaming, HTML5, Mobile"
     },
     {
             "name": "Jason Fox",
@@ -18,7 +19,8 @@ var evangelists = [
             "city": "Dallas TX",
             "img": "/img/People/JasonFox.jpg",
             "twitter": "@JasonGFox",
-            "websiteUrl": "wwww.jasongfox.com"
+            "websiteUrl": "wwww.jasongfox.com",
+            "spec": "Gaming"
     }
     
 ];
