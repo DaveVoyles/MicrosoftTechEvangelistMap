@@ -9,7 +9,11 @@ var evangelists = [
             "img": "/img/People/DaveVoyles.jpg",
             "twitter": "@DaveVoyles",
             "websiteUrl": "wwww.davidvoyles.wordpress.com",
+<<<<<<< HEAD
              "spec": ["Gaming", "HTML"] 
+=======
+             "spec": "Gaming, HTML5, Mobile"
+>>>>>>> c1727fd87c8d426d63af60e0ee9f63790cc4aa73
     },
     {
             "name": "Jason Fox",
@@ -20,7 +24,11 @@ var evangelists = [
             "img": "/img/People/JasonFox.jpg",
             "twitter": "@JasonGFox",
             "websiteUrl": "wwww.jasongfox.com",
+<<<<<<< HEAD
             "spec": ["Gaming" , "null"]
+=======
+            "spec": "Gaming"
+>>>>>>> c1727fd87c8d426d63af60e0ee9f63790cc4aa73
     }
     
 ];

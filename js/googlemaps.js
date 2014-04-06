@@ -6,7 +6,11 @@ $(function () {
         var defaultLatlng       = new google.maps.LatLng(37.09024, -95.712891);
         var biographies         = [];
         var marker;
+<<<<<<< HEAD
         var markerAnim          = google.maps.Animation.DROP;
+=======
+        var markerAnim = google.maps.Animation.DROP;
+>>>>>>> c1727fd87c8d426d63af60e0ee9f63790cc4aa73
         var infoWindowMaxWidth  = 700;
         var infoWindowMaxHeight = 600;
         var zoom = 5;
@@ -23,6 +27,7 @@ $(function () {
         // Loop through evangelists
         for (var i = 0; i < evangelists.length; i++) {
             var e = evangelists;
+<<<<<<< HEAD
             console.log("Name:" + e[i].name + " " + "Spec:" + " " + e[i].spec[i]);
 
             // Check for presence of Gaming in array
@@ -35,6 +40,13 @@ $(function () {
             marker = new google.maps.Marker({    
                 position:  new google.maps.LatLng(e[i].lng, e[i].lat), // Takes lat and lang as arguments
                 map:       map,                                        // Draws to this current map  
+=======
+            console.log(e[i]);
+
+            marker = new google.maps.Marker({                         // Create a new marker for each location in array        
+                position: new google.maps.LatLng(e[i].lng, e[i].lat), // Takes lat and lang as arguments
+                map: map,                                             // Draws to this current map  
+>>>>>>> c1727fd87c8d426d63af60e0ee9f63790cc4aa73
                 animation: markerAnim
             });
 
@@ -47,7 +59,11 @@ $(function () {
             console.log(splitString);
 
             // Creates a bio for each person and stores it in an array
+<<<<<<< HEAD
             var biography = formatBiography(e[i].name, e[i].city, splitString, e[i].img, e[i].bio, e[i].twitter, e[i].websiteUrl);
+=======
+            var biography = formatBiography(e[i].name, e[i].city, e[i].spec, e[i].img, e[i].bio, e[i].twitter, e[i].websiteUrl);
+>>>>>>> c1727fd87c8d426d63af60e0ee9f63790cc4aa73
             biographies.push(biography);
 
             // When you click the marker, pop up an info window
@@ -77,7 +93,11 @@ $(function () {
                 '<div class="bio-container">' +
                 '<h1 id="firstHeading" class="firstHeading">' + name + '</h1>' +
                 '<h3>' + city + '</h3>' +
+<<<<<<< HEAD
                 '<h3>' + spec + '</h3>' +   
+=======
+                '<h3>' + spec + '</h3>' +
+>>>>>>> c1727fd87c8d426d63af60e0ee9f63790cc4aa73
                 '<div id="bodyContent">' +
                  bio +
                 '</div> <!-- .bodyContent-->' +
