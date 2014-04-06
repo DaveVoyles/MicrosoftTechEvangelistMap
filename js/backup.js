@@ -1,13 +1,13 @@
-$(function () {
+﻿$(function () {
 
     function initialize() {
 
         // Center of United States
-        var defaultLatlng       = new google.maps.LatLng(37.09024, -95.712891);
-        var biographies         = [];
+        var defaultLatlng = new google.maps.LatLng(37.09024, -95.712891);
+        var biographies = [];
         var marker;
-        var markerAnim          = google.maps.Animation.DROP;
-        var infoWindowMaxWidth  = 700;
+        var markerAnim = google.maps.Animation.DROP;
+        var infoWindowMaxWidth = 700;
         var infoWindowMaxHeight = 600;
         var zoom = 5;
 
@@ -17,53 +17,46 @@ $(function () {
             center: defaultLatlng
         };
 
-        // Draws a new Google map 
+        // Draws content to map canvas 
         var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
         // Loop through evangelists
         for (var i = 0; i < evangelists.length; i++) {
             var e = evangelists;
-            console.log("Name:" + e[i].name + " " + "Spec:" + " " + e[i].spec[i]);
 
-            // Check for presence of Gaming in array
-            var idx = e[i].spec[i].indexOf("Gaming"); 
-            if (idx != -1 ) {
-                console.log("Name:" + e[i].name + " " + "Specialty gaming included" );
-            };
-
-            // Create a new marker for each location in array    
-            marker = new google.maps.Marker({    
-                position:  new google.maps.LatLng(e[i].lng, e[i].lat), // Takes lat and lang as arguments
-                map:       map,                                        // Draws to this current map  
+            //    if (e[i].spec === "Gaming") {
+            marker = new google.maps.Marker({
+                // Create a new marker for each location in array        
+                position: new google.maps.LatLng(e[i].lng, e[i].lat), // Takes lat and lang as arguments
+                map: map, // Draws to this current map  
                 animation: markerAnim
             });
 
-            // Turn the spec array into a string
-            var specSplit = e[i].spec.toString();
-            console.log("specSplit =" + " " + specSplit);
-
-            // Split the array 
-            var splitString = specSplit.split(",");
-            console.log(splitString);
+            console.log(e);
 
             // Creates a bio for each person and stores it in an array
-            var biography = formatBiography(e[i].name, e[i].city, splitString, e[i].img, e[i].bio, e[i].twitter, e[i].websiteUrl);
+            var biography = formatBiography(e[i].name, e[i].city, e[i].spec, e[i].img, e[i].bio, e[i].twitter, e[i].websiteUrl);
             biographies.push(biography);
 
+            console.log(biography);
+            console.log(marker);
+            console.log(biographies);
+
             // When you click the marker, pop up an info window
-            google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                return function() {
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
                     infowindow.setContent(biographies[i]);
-                    infowindow.open(map, marker);
+                    infowindow.open(map, marker); // open window using current map and currently slect marker
                     console.log(infowindow);
                 }
             })(marker, i));
-        }     
+            //       }
+        }
 
         // Content for info window -- appears when user clicks on a marker
         var infowindow = new google.maps.InfoWindow({
-            content:   "",
-            maxWidth:  infoWindowMaxWidth,
+            content: "",
+            maxWidth: infoWindowMaxWidth,
             maxHeight: infoWindowMaxHeight
         });
 
@@ -77,7 +70,7 @@ $(function () {
                 '<div class="bio-container">' +
                 '<h1 id="firstHeading" class="firstHeading">' + name + '</h1>' +
                 '<h3>' + city + '</h3>' +
-                '<h3>' + spec + '</h3>' +   
+                '<h3>' + spec + '</h3>' +
                 '<div id="bodyContent">' +
                  bio +
                 '</div> <!-- .bodyContent-->' +
@@ -93,7 +86,7 @@ $(function () {
         };
     }
     // When dom load event is triggered, call initlaize function
-     google.maps.event.addDomListener(window, 'load', initialize);   
+    google.maps.event.addDomListener(window, 'load', initialize);
 });
 
 
