@@ -1,4 +1,4 @@
-$(function () {
+﻿$(function () {
 
     function initialize() {
 
@@ -10,7 +10,26 @@ $(function () {
         var infoWindowMaxWidth  = 700;
         var infoWindowMaxHeight = 600;
         var zoom                = 5;
-        var searchTerm          = "Gaming"; 
+        var searchTerm;
+        var searchTermText;
+
+        // Event handler for specialty pulldown
+        $("#specialty").on("change", function() {
+            searchTerm     = $(this).find(':selected').val();
+            searchTermText = $(this).find(':selected').text();
+            //alert("Selected text=" + searchTerm + " Selected value= " + searchTermText);
+
+            //FilterEvangelists();
+
+        });
+
+        //function FilterEvangelists() {
+
+        //    // Loop through all evangelists in the JSON file
+        //    for (var i = 0; i < evangelists.length; i++) {
+        //        var e = evangelists;
+        //    }
+        //};
 
         // Default view for map
         var mapOptions = {
@@ -18,28 +37,30 @@ $(function () {
             center: defaultLatlng
         };
 
-        // Draws a new Google map 
+        // Draws a new Google map, centered on the the US
         var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-        // Loop through all evangelists
+        // Loop through all evangelists in the JSON file
         for (var i = 0; i < evangelists.length; i++) {
             var e = evangelists;
 
-            // Turn the spec array into a string
+            // Turn the specialty array into a string
             var specSplit = e[i].spec.toString();
             console.log("specSplit =" + " " + specSplit);
 
             // Split the array with a comma b/t words
-            var splitString = specSplit.split(",");
+            //TODO: Fix this!
+            var splitString = specSplit.split(" ,");
+            console.log(splitString);
 
             // Check for presence of specialty search term in array - ie: "Gaming"
-            if (specSplit.match(window.searchTerm)) {
+            if (specSplit.match(searchTermText)) {
             
                 // Create a new marker for each location in array    
                 marker = new google.maps.Marker({    
                     position:  new google.maps.LatLng(e[i].lng, e[i].lat), // Takes lat and lang as arguments
                     map:       map,                                        // Draws to this current map  
-                    animation: markerAnim
+                    animation: markerAnim                                  // Drop the marker from the top of the map
                 });
 
                 // Creates a bio for each person and stores it in an array
@@ -68,9 +89,16 @@ $(function () {
 
         // Formats text for bio -- apears above each pin when selected
         // Loops through content in "Locations" array and places it in bio
-        // RETURNS: A formatted string
+        // RETURNS: A formatted string which is drawn to the screen 
         function formatBiography(name, city, spec, img, bio, twitter, websiteUrl) {
             var html = [""];
+
+            // Loop through all args; if any are not defined, just set them to an empty string
+            for (var i = 0; i < arguments.length; i++) {
+                if (arguments[i] == null) {
+                    arguments[i] = "";
+                }
+            }
 
             html.push(
                 '<div class="bio-container">' +
