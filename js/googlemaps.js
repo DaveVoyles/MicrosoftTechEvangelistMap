@@ -1,4 +1,4 @@
-$(function () {
+﻿$(function () {
 
     function initialize() {
 
@@ -10,7 +10,15 @@ $(function () {
         var infoWindowMaxWidth  = 700;
         var infoWindowMaxHeight = 600;
         var zoom                = 5;
-        var searchTerm          = "Gaming"; 
+        var searchTerm;
+        var searchTermText;
+
+        // Event handler for specialty pulldown
+        $("#specialty").on("change", function() {
+            searchTerm     = $(this).find(':selected').val();
+            searchTermText = $(this).find(':selected').text();
+            alert("Selected text=" + searchTerm + " Selected value= " + searchTermText);
+        });
 
         // Default view for map
         var mapOptions = {
@@ -31,9 +39,10 @@ $(function () {
 
             // Split the array with a comma b/t words
             var splitString = specSplit.split(",");
+            console.log(splitString);
 
             // Check for presence of specialty search term in array - ie: "Gaming"
-            if (specSplit.match(window.searchTerm)) {
+            if (specSplit.match(searchTermText)) {
             
                 // Create a new marker for each location in array    
                 marker = new google.maps.Marker({    
