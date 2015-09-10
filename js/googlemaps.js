@@ -17,15 +17,15 @@
         $("#specialty").on("change", function() {
             searchTerm     = $(this).find(':selected').val();
             searchTermText = $(this).find(':selected').text();
-<<<<<<< HEAD
+
             alert("Selected text=" + searchTerm + " Selected value= " + searchTermText);
         });
-=======
+
             //alert("Selected text=" + searchTerm + " Selected value= " + searchTermText);
 
             //FilterEvangelists();
 
-        });
+        //});
 
         //function FilterEvangelists() {
 
@@ -34,7 +34,6 @@
         //        var e = evangelists;
         //    }
         //};
->>>>>>> df97a2d05cfbe1ac41a5fc71d961e598810d6051
 
         // Default view for map
         var mapOptions = {
@@ -54,12 +53,12 @@
             console.log("specSplit =" + " " + specSplit);
 
             // Split the array with a comma b/t words
-<<<<<<< HEAD
+
             var splitString = specSplit.split(",");
-=======
+
             //TODO: Fix this!
             var splitString = specSplit.split(" ,");
->>>>>>> df97a2d05cfbe1ac41a5fc71d961e598810d6051
+
             console.log(splitString);
 
             // Check for presence of specialty search term in array - ie: "Gaming"
@@ -96,7 +95,7 @@
             maxHeight: infoWindowMaxHeight
         });
 
-        // Formats text for bio -- apears above each pin when selected
+        // Formats text for bio -- appears above each pin when selected
         // Loops through content in "Locations" array and places it in bio
         // RETURNS: A formatted string which is drawn to the screen 
         function formatBiography(name, city, spec, img, bio, twitter, websiteUrl) {
