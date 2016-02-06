@@ -1,0 +1,1 @@
+C:\Dev\GitHub\MicrosoftTechEvangelistMap\uwp\TEAMwin10\TEAMwin10\TEAMwin10.csproj;arm
