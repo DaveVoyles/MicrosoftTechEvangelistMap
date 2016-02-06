@@ -8,6 +8,7 @@ import {
 	LocationStrategy,
 	HashLocationStrategy
 } from "angular2/router";
+
 import { HTTP_PROVIDERS } from "angular2/http";
 
 import { Login      } from "../login/login";
@@ -19,10 +20,12 @@ import { AuthHelper } from "../authHelper/authHelper";
 	template  : "<router-outlet></router-outlet>",
 	directives: [ROUTER_DIRECTIVES],
 	providers : [HTTP_PROVIDERS]
+
 })
 
 // Configure the routes for the app
 @RouteConfig([
+
 	{ name: "Login", component: Login, path: "/login" },
 	{ name: "Map"  , component: Map,   path: "/map"   }
 ])
