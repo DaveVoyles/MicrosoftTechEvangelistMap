@@ -5,13 +5,8 @@ html, body, #map-canvas {
     padding: 0;
 }
 
-div {
-    border: solid 1px red;
-}
 .BingMap {
     position: relative;
-    height: 100%;
-    width: 100%;
 }
 
 .evangelist-img {
