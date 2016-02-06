@@ -1,29 +1,27 @@
-﻿$(function () {
-
-    function initialize() {
+﻿document.addEventListener("DOMContentLoaded", function (event) {
 
         // Center of United States
-        var defaultLatlng       = new google.maps.LatLng(37.09024, -95.712891);
-        var biographies         = [];
+        var defaultLatlng = new google.maps.LatLng(37.09024, -95.712891);
+        var biographies = [];
         var marker;
-        var markerAnim          = google.maps.Animation.DROP;
-        var infoWindowMaxWidth  = 700;
+        var markerAnim = google.maps.Animation.DROP;
+        var infoWindowMaxWidth = 700;
         var infoWindowMaxHeight = 600;
-        var zoom                = 5;
+        var zoom = 5;
         var searchTerm;
         var searchTermText;
 
         // Event handler for specialty pulldown
-        $("#specialty").on("change", function() {
-            searchTerm     = $(this).find(':selected').val();
+        $("#specialty").on("change", function () {
+            searchTerm = $(this).find(':selected').val();
             searchTermText = $(this).find(':selected').text();
 
             alert("Selected text=" + searchTerm + " Selected value= " + searchTermText);
         });
 
-            //alert("Selected text=" + searchTerm + " Selected value= " + searchTermText);
+        //alert("Selected text=" + searchTerm + " Selected value= " + searchTermText);
 
-            //FilterEvangelists();
+        //FilterEvangelists();
 
         //});
 
@@ -65,9 +63,9 @@
             if (specSplit.match(searchTermText)) {
             
                 // Create a new marker for each location in array    
-                marker = new google.maps.Marker({    
-                    position:  new google.maps.LatLng(e[i].lng, e[i].lat), // Takes lat and lang as arguments
-                    map:       map,                                        // Draws to this current map  
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(e[i].lng, e[i].lat), // Takes lat and lang as arguments
+                    map: map,                                        // Draws to this current map  
                     animation: markerAnim                                  // Drop the marker from the top of the map
                 });
 
@@ -76,8 +74,8 @@
                 biographies.push(biography);
 
                 // When you click the marker, pop up an info window
-                google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                    return function() {
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function () {
                         infowindow.setContent(biographies[i]);
                         infowindow.open(map, marker);
                         console.log(infowindow);
@@ -86,12 +84,12 @@
             }     
             // If this item in the index exists.....
             console.log("Name:" + e[i].name + " " + "Specialty gaming included");
-    };
+        };
 
         // Content for info window -- appears when user clicks on a marker
         var infowindow = new google.maps.InfoWindow({
-            content:   "",
-            maxWidth:  infoWindowMaxWidth,
+            content: "",
+            maxWidth: infoWindowMaxWidth,
             maxHeight: infoWindowMaxHeight
         });
 
@@ -112,9 +110,9 @@
                 '<div class="bio-container">' +
                 '<h1 id="firstHeading" class="firstHeading">' + name + '</h1>' +
                 '<h3>' + city + '</h3>' +
-                '<h3>' + spec+ '</h3>' +   
+                '<h3>' + spec + '</h3>' +
                 '<div id="bodyContent">' +
-                 bio +
+                bio +
                 '</div> <!-- .bodyContent-->' +
                 '<p>' +
                 '<a href=' + twitter + '/>' + twitter +
@@ -126,9 +124,9 @@
                 );
             return html.join('');
         };
-    }
+    //}
     // When dom load event is triggered, call initlaize function
-     google.maps.event.addDomListener(window, 'load', initialize);   
+     //google.maps.event.addDomListener(window, 'load', initialize);   
 });
 
 
