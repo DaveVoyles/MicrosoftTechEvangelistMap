@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/platform/browser", "angular2/router", "angular2/http", "../login/login", "../files/files", "../authHelper/authHelper"], function(exports_1) {
+System.register(["angular2/core", "angular2/platform/browser", "angular2/router", "angular2/http", "../login/login", "../map/map", "../authHelper/authHelper"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(["angular2/core", "angular2/platform/browser", "angular2/router"
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, browser_1, router_1, http_1, login_1, files_1, authHelper_1;
+    var core_1, browser_1, router_1, http_1, login_1, map_1, authHelper_1;
     var App;
     return {
         setters:[
@@ -27,8 +27,8 @@ System.register(["angular2/core", "angular2/platform/browser", "angular2/router"
             function (login_1_1) {
                 login_1 = login_1_1;
             },
-            function (files_1_1) {
-                files_1 = files_1_1;
+            function (map_1_1) {
+                map_1 = map_1_1;
             },
             function (authHelper_1_1) {
                 authHelper_1 = authHelper_1_1;
@@ -39,7 +39,7 @@ System.register(["angular2/core", "angular2/platform/browser", "angular2/router"
                     // Route the user to a view based on presence of access token
                     if (auth.access_token !== null) {
                         // access token exists...display the users files
-                        router.navigate(["/Files"]);
+                        router.navigate(["/Map"]);
                     }
                     else {
                         // access token doesn't exist, so the user needs to login
@@ -48,14 +48,14 @@ System.register(["angular2/core", "angular2/platform/browser", "angular2/router"
                 }
                 App = __decorate([
                     core_1.Component({
-                        selector: "files-app",
+                        selector: "map",
                         template: "<router-outlet></router-outlet>",
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [http_1.HTTP_PROVIDERS]
                     }),
                     router_1.RouteConfig([
                         { name: "Login", component: login_1.Login, path: "/login" },
-                        { name: "Files", component: files_1.Files, path: "/files" }
+                        { name: "Map", component: map_1.Map, path: "/map" }
                     ]), 
                     __metadata('design:paramtypes', [router_1.Router, authHelper_1.AuthHelper])
                 ], App);

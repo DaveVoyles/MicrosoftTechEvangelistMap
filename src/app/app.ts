@@ -11,11 +11,11 @@ import {
 import { HTTP_PROVIDERS } from "angular2/http";
 
 import { Login } from "../login/login";
-import { Files } from "../files/files";
+import { Map } from "../map/map";
 import { AuthHelper } from "../authHelper/authHelper";
 
 @Component({
-	selector: "files-app",
+	selector: "map",
 	template: "<router-outlet></router-outlet>",
 	directives: [ROUTER_DIRECTIVES],
 	providers: [HTTP_PROVIDERS]
@@ -24,7 +24,7 @@ import { AuthHelper } from "../authHelper/authHelper";
 // Configure the routes for the app
 @RouteConfig([
 	{ name: "Login", component: Login, path: "/login" },
-	{ name: "Files", component: Files, path: "/files" }
+	{ name: "Map", component: Map, path: "/map" }
 ])
 
 export class App {
@@ -32,7 +32,7 @@ export class App {
 		// Route the user to a view based on presence of access token
 		if (auth.access_token !== null) {
 			// access token exists...display the users files
-			router.navigate(["/Files"]);
+			router.navigate(["/Map"]);
 		}
 		else {
 			// access token doesn't exist, so the user needs to login

@@ -4,14 +4,12 @@ import { Http, Headers } from "angular2/http";
 import { AuthHelper } from "../authHelper/authHelper"
 
 @Component({
-	selector: "files"
+	selector: "files",
+	templateUrl: "src/map/map.html",
+    styleUrls:["map.css"]
 })
 
-@View({
-	templateUrl: "src/files/view-files.html"
-})
-
-export class Files {
+export class Map {
 	private files = [];
 	constructor(http:Http, authHelper:AuthHelper) {
 		// Perform REST call into Microsoft Graph for files on OneDrive for Business

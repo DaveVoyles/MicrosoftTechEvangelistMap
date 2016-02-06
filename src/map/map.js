@@ -9,7 +9,7 @@ System.register(["angular2/core", "angular2/http", "../authHelper/authHelper"], 
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, http_1, authHelper_1;
-    var Files;
+    var Map;
     return {
         setters:[
             function (core_1_1) {
@@ -22,8 +22,8 @@ System.register(["angular2/core", "angular2/http", "../authHelper/authHelper"], 
                 authHelper_1 = authHelper_1_1;
             }],
         execute: function() {
-            Files = (function () {
-                function Files(http, authHelper) {
+            Map = (function () {
+                function Map(http, authHelper) {
                     var _this = this;
                     this.files = [];
                     // Perform REST call into Microsoft Graph for files on OneDrive for Business
@@ -38,19 +38,18 @@ System.register(["angular2/core", "angular2/http", "../authHelper/authHelper"], 
                             alert("An error occurred calling the Microsoft Graph: " + res.status);
                     });
                 }
-                Files = __decorate([
+                Map = __decorate([
                     core_1.Component({
-                        selector: "files"
-                    }),
-                    core_1.View({
-                        templateUrl: "src/files/view-files.html"
+                        selector: "files",
+                        templateUrl: "src/map/map.html",
+                        styleUrls: ["map.css"]
                     }), 
                     __metadata('design:paramtypes', [http_1.Http, authHelper_1.AuthHelper])
-                ], Files);
-                return Files;
+                ], Map);
+                return Map;
             })();
-            exports_1("Files", Files);
+            exports_1("Map", Map);
         }
     }
 });
-//# sourceMappingURL=files.js.map
+//# sourceMappingURL=map.js.map
