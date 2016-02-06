@@ -43,7 +43,7 @@ System.register(["angular2/core", "angular2/platform/browser", "angular2/router"
                     }
                     else {
                         // access token doesn't exist, so the user needs to login
-                        router.navigate(["/Login"]);
+                        router.navigate(["/Map"]); // TODO: Change this back to login page after debug
                     }
                 }
                 App = __decorate([

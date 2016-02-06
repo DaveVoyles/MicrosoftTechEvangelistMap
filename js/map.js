@@ -4,7 +4,9 @@
         var map = new Microsoft.Maps.Map(document.getElementById('BingMap'), { credentials: 'Ah1_aJohnC76ttqxM-PjSm5rsabmFcLSOujmuYvfSmKSHAOk9Xm2X2E6AtCQBNPk' });
 
         // Center of United States
-        var defaultLatLng = map.setView({ zoom:5, center: new Microsoft.Maps.Location(37.09024, -95.712891) })
+        var defaultLatLng = map.setView({ zoom: 5, center: new Microsoft.Maps.Location(37.09024, -95.712891) })
+
+
         var biographies = [];
         var marker;
         var markerAnim = google.maps.Animation.DROP;
