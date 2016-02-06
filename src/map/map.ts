@@ -12,8 +12,6 @@ import { AuthHelper      } from "../authHelper/authHelper"
 
 export class Map {
     private files               = [];
-    private infoWindowMaxWidth  = 700;
-    private infoWindowMaxHeight = 600;
     public bingAPIKey           ='Ah1_aJohnC76ttqxM-PjSm5rsabmFcLSOujmuYvfSmKSHAOk9Xm2X2E6AtCQBNPk';
 
     constructor(http: Http, authHelper: AuthHelper) {
@@ -34,24 +32,23 @@ export class Map {
         let map = new Microsoft.Maps.Map(document.getElementById('BingMap'), {
             credentials: 'Ah1_aJohnC76ttqxM-PjSm5rsabmFcLSOujmuYvfSmKSHAOk9Xm2X2E6AtCQBNPk'
         });
+               
         
-//       
-//         // Focus map on center of United States
-        let defaultLngLat = [37.09024, -95.712891];
-        map.setView({ zoom: 5, center: new Microsoft.Maps.Location(defaultLngLat[0], defaultLngLat[1]) })
+        // Focus map on center of United States
+        let aDefaultLngLat = [37.09024, -95.712891];
+        
+        let aCenterLoc = new Microsoft.Maps.Location(aDefaultLngLat[0], aDefaultLngLat[1]);
+        map.setView({ zoom: 5, center: aCenterLoc })
 
         // Push pins 
         map.entities.clear();
-        var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(defaultLngLat[0], defaultLngLat[1]), null);
+        var pushpin = new Microsoft.Maps.Pushpin(aCenterLoc);
         map.entities.push(pushpin);
         
-
-
-         // InfoBox to appear after user clicks on pin
-        // var infoboxOptions = { width: 200, height: 100 };
-        // var infoboxOptions = { width: infoWindow, height: 100 };
-        // var defaultInfobox = new Microsoft.Maps.Infobox(map.getCenter(), infoboxOptions);
-        // map.entities.push(defaultInfobox);
+        // InfoBox to appear after user clicks on pin
+        let infoboxOptions = { width: 500, height: 300 };
+        let defaultInfobox = new Microsoft.Maps.Infobox(aCenterLoc, infoboxOptions);
+        map.entities.push(defaultInfobox);
     }  
 
 
