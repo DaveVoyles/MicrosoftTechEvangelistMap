@@ -1,24 +1,6 @@
-﻿<<<<<<< HEAD
 ﻿<!DOCTYPE html>
-<html>
-    <head>
-        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-        <meta charset="utf-8">
-        <title>Map Window</title>
-        <link href="css/map.css" rel="stylesheet" />
-    </head>
-
-    <body>
-        <div id="BingMap"></div>
-        <script src="js/biographies.js"></script>
-        <script src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
-        <script src="js/map.js"></script>
-    </body>
-</html>
-
-=======
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Evangelist Map</title>
@@ -35,6 +17,8 @@
 	<script src="node_modules/angular2/bundles/angular2.dev.js"></script>
 	<script src="node_modules/angular2/bundles/router.dev.js"></script>
 	<script src="node_modules/angular2/bundles/http.dev.js"></script>
+    <!-- Bing Map API --> 
+    <script src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
 	<script type="text/javascript">
 		System.config({
 			packages: {
@@ -45,13 +29,14 @@
 			}
 		});
 		System.import("src/app/app");
-	</script>
+    </script>
 </head>
+
 <body>
-	<div class="container">
-		<h1>Evangelist Map</h1>
-		<map></map>
-	</div>
+    <div class="container">
+        <h1>(T)echnical (E)vangelist (A)wesome (M)ap - TEAM!</h1>
+            <app></app>
+    </div>
 </body>
+
 </html>
->>>>>>> 52bfa5cde45154be885df65f00fb63f55fb134f1

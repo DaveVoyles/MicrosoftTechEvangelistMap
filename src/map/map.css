@@ -1,0 +1,38 @@
+﻿/* Maintain full screen view*/
+html, body, #map-canvas {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.BingMap {
+    position: relative;
+}
+
+.evangelist-img {
+    height: 150px;
+    width: 150px;
+    padding-top: 3%;
+    padding-right: 3%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 10px 10px 10px 10px;
+    border: 0 solid #000000;
+}
+
+.bio-container {
+    max-width: 70%;
+}
+
+#specialty {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    background-color: rgba(0, 0, 0, .5);
+    padding: 1%;
+    border-radius: 10px 10px 10px 10px;
+    color: azure;
+    font-size: 1.3em;
+    text-shadow: 2px 2px rgb(0,0,0);
+}
