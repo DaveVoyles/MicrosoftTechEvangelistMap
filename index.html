@@ -1,28 +1,37 @@
-﻿<!DOCTYPE html>
-<html>
-    <head>
-        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-        <meta charset="utf-8">
-        <title>Info window</title>
-
-        <script src="js/jquery.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-        <script src="js/google-maps-3-vs-1-0.js"></script>
-        <script src="js/googlemaps.js"></script>
-        <script src="js/biographies.js"></script>
-        <link href="css/googleMaps.css" rel="stylesheet" />
-
-    </head>
-    <body>
-        <div id="map-canvas"></div>
-        <form action="" id="specialty">
-           Select a specialty: <select name="specialty">
-                <option value="Gaming">Gaming</option>
-                <option value="HTML5">HTML5</option>
-                <option value="Windows8">Windows 8</option>
-                <option value="WP8">Windows Phone 8</option>
-            </select>
-        </form>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>My Files</title>
+	
+	<!-- Bootstrap stuff -->
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+	
+	<!-- Angular2 stuff -->
+	<script src="node_modules/systemjs/dist/system.src.js"></script>
+	<script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+	<script src="node_modules/rxjs/bundles/Rx.js"></script>
+	<script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+	<script src="node_modules/angular2/bundles/router.dev.js"></script>
+	<script src="node_modules/angular2/bundles/http.dev.js"></script>
+	<script type="text/javascript">
+		System.config({
+			packages: {
+				"src": {
+					format: "register",
+					defaultExtension: "js"
+				}
+			}
+		});
+		System.import("src/app/app");
+	</script>
+</head>
+<body>
+	<div class="container">
+		<h1>My Files</h1>
+		<files-app></files-app>
+	</div>
+</body>
 </html>
-
