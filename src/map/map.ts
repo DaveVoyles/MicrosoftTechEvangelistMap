@@ -1,4 +1,4 @@
-/// <reference path="../../typedefs/microsoft.maps.d.ts" />
+/// <reference path="../../typings/microsoft.maps.d.ts" />
 
 import { Component, View } from "angular2/core";
 import { Http, Headers   } from "angular2/http";
@@ -14,31 +14,33 @@ export class Map {
     private files               = [];
     private infoWindowMaxWidth  = 700;
     private infoWindowMaxHeight = 600;
+    public bingAPIKey           ='Ah1_aJohnC76ttqxM-PjSm5rsabmFcLSOujmuYvfSmKSHAOk9Xm2X2E6AtCQBNPk';
 
     constructor(http: Http, authHelper: AuthHelper) {
 		
         // Perform REST call into Microsoft Graph for files on OneDrive for Business
-		http.get("https://graph.microsoft.com/v1.0/me/drive/root/children", {
-			headers: new Headers({ "Authorization": "Bearer " + authHelper.access_token })
-		})
-		.subscribe(res => {
-			// Check the response status before trying to display files
-			if (res.status === 200)
-				this.files = res.json().value;
-			else
-				alert("An error occurred calling the Microsoft Graph: " + res.status);
-            });
+		// http.get("https://graph.microsoft.com/v1.0/me/drive/root/children", {
+		// 	headers: new Headers({ "Authorization": "Bearer " + authHelper.access_token })
+		// })
+		// .subscribe(res => {
+		// 	// Check the response status before trying to display files
+		// 	if (res.status === 200)
+		// 		this.files = res.json().value;
+		// 	else
+		// 		alert("An error occurred calling the Microsoft Graph: " + res.status);
+        //     });
 
         // Bing map instance w/ DV's API key
         let map = new Microsoft.Maps.Map(document.getElementById('BingMap'), {
             credentials: 'Ah1_aJohnC76ttqxM-PjSm5rsabmFcLSOujmuYvfSmKSHAOk9Xm2X2E6AtCQBNPk'
         });
-      
-        // Focus map on center of United States
+        
+//       
+//         // Focus map on center of United States
         let defaultLngLag = [37.09024, -95.712891];
         map.setView({ zoom: 5, center: new Microsoft.Maps.Location(defaultLngLag[0], defaultLngLag[1]) })
 
-        // Push pins for map
+//         // Push pins for map
         map.entities.clear();
         var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
         map.entities.push(pushpin);
