@@ -23,17 +23,17 @@ export class Map {
     private aCenterLoc = new Microsoft.Maps.Location(this.aDefaultLngLat[0], this.aDefaultLngLat[1]);
 
     private infoboxOptions = { width: 400, height: 250, showCloseButton: true };
-    private bingAPIKey = 'Ah1_aJohnC76ttqxM-PjSm5rsabmFcLSOujmuYvfSmKSHAOk9Xm2X2E6AtCQBNPk';
-    // private pushpin        = new Microsoft.Maps.Pushpin(this.aCenterLoc);         
+    private bingAPIKey = 'Ah1_aJohnC76ttqxM-PjSm5rsabmFcLSOujmuYvfSmKSHAOk9Xm2X2E6AtCQBNPk';       
     
 
     constructor(http: Http, authHelper: AuthHelper) {
 
+        // Create Map, infobox, & pushpin
         this.defaultInfobox = new Microsoft.Maps.Infobox(this.aCenterLoc, this.infoboxOptions);
-        this.myMap = new Microsoft.Maps.Map(document.getElementById('BingMap'), {
+        this.myMap          = new Microsoft.Maps.Map(document.getElementById('BingMap'), {
             credentials: this.bingAPIKey
         });
-        this.pushpin = new Microsoft.Maps.Pushpin(this.aCenterLoc);         
+        this.pushpin        = new Microsoft.Maps.Pushpin(this.aCenterLoc);         
         
         // Center map on the United States   
         this.myMap.setView({ zoom: 5, center: this.aCenterLoc })
@@ -42,10 +42,6 @@ export class Map {
         this.myMap.entities.clear();
         this.myMap.entities.push(this.pushpin);
         this.myMap.entities.push(this.defaultInfobox);  
-
-        //  this.defaultInfobox =  new Microsoft.Maps.Infobox(this.aCenterLoc, this.infoboxOptions);
-
-        // InfoBox to appear after user clicks on pin
 
         // Perform REST call into Microsoft Graph for files on OneDrive for Business
         // http.get("https://graph.microsoft.com/v1.0/me/drive/root/children", {
@@ -58,31 +54,6 @@ export class Map {
         // 	else
         // 		alert("An error occurred calling the Microsoft Graph: " + res.status);
         //     });
-
-        // Bing map instance w/ DV's API key
-
-        let map = new Microsoft.Maps.Map(document.getElementById('BingMap'), {
-            credentials: 'Ah1_aJohnC76ttqxM-PjSm5rsabmFcLSOujmuYvfSmKSHAOk9Xm2X2E6AtCQBNPk',
-            width: 1000,
-            height: 400
-        });
-               
-        
-        // Focus map on center of United States
-        let aDefaultLngLat = [37.09024, -95.712891];
-
-        let aCenterLoc = new Microsoft.Maps.Location(aDefaultLngLat[0], aDefaultLngLat[1]);
-        map.setView({ zoom: 5, center: aCenterLoc })
-
-        // Push pins 
-        map.entities.clear();
-        var pushpin = new Microsoft.Maps.Pushpin(aCenterLoc);
-        map.entities.push(pushpin);
-        
-        // InfoBox to appear after user clicks on pin
-        let infoboxOptions = { width: 500, height: 300 };
-        let defaultInfobox = new Microsoft.Maps.Infobox(aCenterLoc, infoboxOptions);
-        map.entities.push(defaultInfobox);
     }  
    
          
