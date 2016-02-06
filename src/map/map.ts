@@ -5,7 +5,7 @@ import { Http, Headers   } from "angular2/http";
 import { AuthHelper      } from "../authHelper/authHelper"
 
 @Component({
-	selector   : "files",
+	selector   : "map",
 	templateUrl: "src/map/map.html",
     styleUrls  :["src/map/map.css"]
 })
@@ -37,19 +37,21 @@ export class Map {
         
 //       
 //         // Focus map on center of United States
-        let defaultLngLag = [37.09024, -95.712891];
-        map.setView({ zoom: 5, center: new Microsoft.Maps.Location(defaultLngLag[0], defaultLngLag[1]) })
+        let defaultLngLat = [37.09024, -95.712891];
+        map.setView({ zoom: 5, center: new Microsoft.Maps.Location(defaultLngLat[0], defaultLngLat[1]) })
 
-//         // Push pins for map
+        // Push pins 
         map.entities.clear();
-        var pushpin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
+        var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(defaultLngLat[0], defaultLngLat[1]), null);
         map.entities.push(pushpin);
+        
 
-        // InfoBox to appear after user clicks on pin
-        //var infoboxOptions = { width: 200, height: 100 };
-        //var infoboxOptions = { width: infoWindow, height: 100 };
-        //var defaultInfobox = new Microsoft.Maps.Infobox(map.getCenter(), infoboxOptions);
-        //map.entities.push(defaultInfobox);
+
+         // InfoBox to appear after user clicks on pin
+        // var infoboxOptions = { width: 200, height: 100 };
+        // var infoboxOptions = { width: infoWindow, height: 100 };
+        // var defaultInfobox = new Microsoft.Maps.Infobox(map.getCenter(), infoboxOptions);
+        // map.entities.push(defaultInfobox);
     }  
 
 
