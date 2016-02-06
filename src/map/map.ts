@@ -30,7 +30,9 @@ export class Map {
 
         // Bing map instance w/ DV's API key
         let map = new Microsoft.Maps.Map(document.getElementById('BingMap'), {
-            credentials: 'Ah1_aJohnC76ttqxM-PjSm5rsabmFcLSOujmuYvfSmKSHAOk9Xm2X2E6AtCQBNPk'
+            credentials: 'Ah1_aJohnC76ttqxM-PjSm5rsabmFcLSOujmuYvfSmKSHAOk9Xm2X2E6AtCQBNPk',
+            width:1000,
+            height:400
         });
                
         

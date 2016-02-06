@@ -18,9 +18,9 @@ import { AuthHelper } from "../authHelper/authHelper";
 @Component({
 	selector  : "app",
 	templateUrl: "src/app/app.html",
+    styleUrls:['src/app/app.css'],
 	directives: [Map],
 	providers : [HTTP_PROVIDERS]
-
 })
 
 // Configure the routes for the app
