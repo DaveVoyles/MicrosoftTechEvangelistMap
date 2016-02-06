@@ -16,9 +16,9 @@ import { Map        } from "../map/map";
 import { AuthHelper } from "../authHelper/authHelper";
 
 @Component({
-	selector  : "map",
-	template  : "<router-outlet></router-outlet>",
-	directives: [ROUTER_DIRECTIVES],
+	selector  : "app",
+	templateUrl: "src/app/app.html",
+	directives: [Map],
 	providers : [HTTP_PROVIDERS]
 
 })

@@ -1,23 +1,24 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Evangelist Map</title>
-	
-	<!-- Bootstrap stuff -->
-	<script src="node_modules/jquery/dist/jquery.min.js"></script>
-	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
-	
-	<!-- Angular2 stuff -->
-	<script src="node_modules/systemjs/dist/system.src.js"></script>
-	<script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-	<script src="node_modules/rxjs/bundles/Rx.js"></script>
-	<script src="node_modules/angular2/bundles/angular2.dev.js"></script>
-	<script src="node_modules/angular2/bundles/router.dev.js"></script>
-	<script src="node_modules/angular2/bundles/http.dev.js"></script>
-	<script type="text/javascript">
-		System.config({
+    <meta charset="UTF-8">
+    <title>Evangelist Map</title>
+
+    <!-- Bootstrap stuff -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Angular2 stuff -->
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="node_modules/rxjs/bundles/Rx.js"></script>
+    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="node_modules/angular2/bundles/router.dev.js"></script>
+    <script src="node_modules/angular2/bundles/http.dev.js"></script>
+    <script type="text/javascript">
+        System.config({
 			packages: {
 				"src": {
 					format: "register",
@@ -26,12 +27,14 @@
 			}
 		});
 		System.import("src/app/app");
-	</script>
+    </script>
 </head>
+
 <body>
-	<div class="container">
-		<h1>Evangelist Map</h1>
-		<map></map>
-	</div>
+    <div class="container">
+        <h1>(T)echnical (E)vangelist (A)wesome (M)ap - TEAM!</h1>
+            <app></app>
+    </div>
 </body>
+
 </html>
