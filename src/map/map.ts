@@ -29,7 +29,8 @@ export class Map {
     constructor(http: Http, authHelper: AuthHelper) {
 
         // Create Map, infobox, & pushpin
-        this.defaultInfobox = new Microsoft.Maps.Infobox(this.aCenterLoc, this.infoboxOptions);
+        // this.defaultInfobox = new Microsoft.Maps.Infobox(this.aCenterLoc, this.infoboxOptions);
+        this.defaultInfobox = new Microsoft.Maps.Infobox(new Microsoft.Maps.Location(38.09024, -95.712891), this.infoboxOptions); // Put info box slight above pin
         this.myMap          = new Microsoft.Maps.Map(document.getElementById('BingMap'), {
             credentials: this.bingAPIKey
         });
@@ -41,7 +42,19 @@ export class Map {
         // Create pin and infobox
         this.myMap.entities.clear();
         this.myMap.entities.push(this.pushpin);
-        this.myMap.entities.push(this.defaultInfobox);  
+        this.myMap.entities.push(this.defaultInfobox);    
+        
+        // Toggle infobox when user hovers over pin
+        let evt = document.createEvent('Event');
+        evt.initEvent('customevent', true, true);
+        
+                // 
+        // Microsoft.Maps.Events.addHandler(this.pushpin, 'click', ()=> this.defaultInfobox.setOptions(
+        //     {visible:false}
+        //     ));
+        
+        // Microsoft.Maps.Events.addHandler(this.pushpin, 'click', this.toggleInfoBox());
+        
 
         // Perform REST call into Microsoft Graph for files on OneDrive for Business
         // http.get("https://graph.microsoft.com/v1.0/me/drive/root/children", {
@@ -55,6 +68,31 @@ export class Map {
         // 		alert("An error occurred calling the Microsoft Graph: " + res.status);
         //     });
     }  
+   
+  
+   //
+    eventTest () : any { 
+    Microsoft.Maps.Events.addHandler(this.pushpin, 'mouseover', this.tellMeSomething());
+   }
+    
+    tellMeSomething () : any {
+        console.log('hello');
+        
+   }
+
+    toggleInfoBox() : any {
+        if (this.defaultInfobox.getVisible() == false) {
+            this.defaultInfobox.setOptions({visible: true})
+            console.log('turning displayo on');
+        }
+        else
+        {
+            this.defaultInfobox.setOptions({visible:false}) 
+            console.log('turning display off');
+        }
+    }
+   
+   
    
          
     /***
